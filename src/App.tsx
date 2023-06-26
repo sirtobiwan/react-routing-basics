@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import HomePage from "./pages/HomePage.tsx";
+import {Routes, Route, Link} from "react-router-dom";
+import AboutMe from "./pages/AboutMe.tsx";
+import Resume from "./pages/Resume.tsx";
+import Gallery from "./pages/Gallery.tsx";
+import Random from "./pages/Random.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/about-me" element={<AboutMe/>}/>
+                <Route path="/gallery" element={<Gallery/>}/>
+                <Route path="/resume" element={<Resume/>}/>
+                <Route path="/random" element={<Random/>}></Route>
+            </Routes>
+            <ul>
+                <li><Link to={"/"}>Home</Link></li>
+                <li><Link to="/About-me">About Me</Link></li>
+                <li><Link to={"/Gallery"}>Gallery</Link></li>
+                <li><Link to={"/Resume"}>Resume</Link></li>
+                <li><Link to={"/Random"}>Others</Link></li>
+            </ul>
+        </>
+    )
 }
 
 export default App
